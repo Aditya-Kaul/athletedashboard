@@ -1,0 +1,174 @@
+
+  <div class="text-center mt-1">
+    <div class="content-header text-center pt-1">
+      <a href="#" style="color: black;"><h1><strong>Athletes Dashboard</strong></h1></a>
+      <h1><em>Profile No: {{ profile_id }}</em></h1>
+
+  </div>
+    
+
+  </div>
+    <section>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card ml-2">
+                    <div class="card-header">
+                        <div class="text-center">
+                            <img  class="rounded picture" alt="User Image">
+                            
+                            <h4 class="mt-1">{{ name }}</h4>
+                            
+                    </div>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group ">
+                    <li class="list-group-item">
+                      <b>Followers</b>
+                      <a class="float-right">1</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Pets</b>
+                      <a class="float-right">100</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Net Worth</b>
+                      <a class="float-right">56</a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+
+            </div>
+            <div class="col-md-9">
+              <div class="card card-primary card-outline">
+                <div class="card-header bg-light">
+                  <h3 class="card-title">Basic Information</h3>
+                    <a class="btn btn-sm float-right" *ngIf="!showEdit" (click)="changeFlag()" style="cursor: pointer;"><i class="fa fa-pencil-square-o"></i></a>   
+                    <a class="close" *ngIf="showEdit" (click)="changeFlag()" style="cursor: pointer;">&times;</a>           
+                  
+                </div>
+
+                <div class="card-body" *ngIf="!showEdit">
+                 
+                  
+                  <ng-container *ngFor="let profile of profiles;let i = index;">
+                    <dl class="row" >
+                      <dt class="col-sm-3">name</dt>
+                      <dd class="col-sm-9">{{ profile.name }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">nationality</dt>
+                      <dd class="col-sm-9">{{ profile.nationality }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">gender</dt>
+                      <dd class="col-sm-9">{{ profile.gender }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">dob</dt>
+                      <dd class="col-sm-9">{{ profile.dob }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">sports_id</dt>
+                      <dd class="col-sm-9">{{ profile.sport_id }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">association</dt>
+                      <dd class="col-sm-9">{{ profile.association }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">team</dt>
+                      <dd class="col-sm-9">{{ profile.team }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">instagram</dt>
+                      <dd class="col-sm-9">{{ profile.instagram_handle }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">facebook</dt>
+                      <dd class="col-sm-9">{{ profile.facebook_handle }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">twitter</dt>
+                      <dd class="col-sm-9">{{ profile.twitter_handle }}</dd>
+                    </dl>
+                    <dl class="row" >
+                      <dt class="col-sm-3">sport</dt>
+                      <dd class="col-sm-9">{{ profile.sport.name }}</dd>
+                    </dl>
+                  </ng-container>
+                  <!-- ./row -->
+                 
+                </div>
+  
+                <div class="card-body" *ngIf="showEdit">
+                  <form [formGroup]="edit_profile_form" >
+                  <div class="row">
+                      <div class="col-md-8" *ngFor="let profile of profiles">
+                        <div class="form-group">
+                          <label>name</label>
+                          <input type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div class="form-group">
+                          <label>nationality</label>
+                          <input type="text" class="form-control" formControlName="nationality">
+                        </div>
+                        <div class="form-group">
+                          <label>gender</label>
+                          <select class="form-control" formControlName="gender">
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>DOB</label>
+                          <input type="date" class="form-control" formControlName="dob">
+                        </div>
+                        <div class="form-group">
+                          <label>Sport</label>
+                          <input type="text" class="form-control" formControlName="sport">
+                        </div>
+                        <div class="form-group">
+                          <label>association</label>
+                          <select class="form-control" formControlName="association" >
+                            <option value="IPL">IPL</option>
+                            <option value="ICL">ICL</option>
+                            <option value="PPL">PPL</option>
+                          </select>
+                        </div>
+                        <div class="form-group" >
+                          <label>Team</label>
+                          <select class="form-control" formControlName="team">
+                            <option value="CSK">CSK</option>
+                              <option value="KKR">KKR</option>
+                              <option value="KXIIP">KXIIP</option>
+                              <option value="RCB">RCB</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Instagram</label>
+                          <input type="text" class="form-control" formControlName="instagram_handle">
+                        </div>
+                        <div class="form-group">
+                          <label>Facebook</label>
+                          <input type="text" class="form-control" formControlName="facebook_handle">
+                        </div>
+                        <div class="form-group">
+                          <label>Twitter</label>
+                          <input type="text" class="form-control" formControlName="twitter_handle">
+                        </div>
+                        <div class="form-group">
+                          <label>description</label>
+                          <input type="text" class="form-control" formControlName="description">
+                        </div>
+                      </div>
+                  </div>
+                  </form>
+                  <div class="text-center">
+                    <button class="btn btn-lg btn-success" type="submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>

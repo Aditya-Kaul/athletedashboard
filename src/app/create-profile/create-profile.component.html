@@ -1,0 +1,258 @@
+
+<div class="content pt-1" id="grad1">
+    <div class="content-header text-center pt-1">
+        <a href="#" style="color: black;"><h1><strong>Athletes Dashboard</strong></h1></a>
+        <p><em>Create new Profile</em></p>
+
+    </div>
+
+        <div class="card">
+            <div class="card-body p-2">
+                <mat-horizontal-stepper id="grad1">
+                    <mat-step [stepControl]="basicInfoForm" errorMessage="All fields are required.">
+                    <form [formGroup]="basicInfoForm">
+                        <ng-template matStepLabel>Basic Info</ng-template>
+                        <mat-form-field appearance="outline"> 
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" placeholder="Enter your name"  required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="outline"> 
+                            <mat-label>Sport</mat-label>
+                            <input matInput formControlName="sport" placeholder="Enter sport you play"  required>
+                            <!-- <mat-select formControlName="sport" id="select-sport"></mat-select> -->
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="outline"> 
+                            <mat-label>Nationality</mat-label>
+                            <input matInput formControlName="nationality" placeholder="Enter your nationality"  required>
+                        </mat-form-field>
+                        <br>
+                              <mat-form-field appearance="outline"> 
+                                <mat-label>D.O.B</mat-label>
+                                <input matInput type="date" formControlName="dob" placeholder="Enter your nationality"  required>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Gender</mat-label>
+                            <mat-select formControlName="gender" required>
+                                <mat-option value=0>Male</mat-option>
+                                <mat-option value=1>Female</mat-option>
+                                <mat-option value=2>Others</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                              
+                            <div class="mt-1">
+                                <button mat-raised-button color="accent" matStepperNext >Next</button>
+                            </div>
+
+                    </form>
+                </mat-step>
+    
+                <mat-step label="About" [stepControl]="aboutForm" errorMessage="All fields are required.">
+                    
+                    <form [formGroup]="aboutForm">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input matInput formControlName="description" placeholder="description" required>
+                         </mat-form-field>
+                         <br>
+                         <mat-form-field appearance="outline">
+                            <mat-label>Select Team</mat-label>
+                            <mat-select formControlName="team" required>
+                                <mat-option value="CSK">CSK</mat-option>
+                                <mat-option value="KKR">KKR</mat-option>
+                                <mat-option value="KXIIP">KXIIP</mat-option>
+                                <mat-option value="RCB">RCB</mat-option>
+                              </mat-select>
+                         </mat-form-field>
+  
+                         <br>
+                         <mat-form-field appearance="outline">
+                            <mat-label>Select Association</mat-label>
+                            <mat-select formControlName="association" required>
+                                <mat-option value="IPL">IPL</mat-option>
+                                <mat-option value="ICL">ICL</mat-option>
+                                <mat-option value="PPL">PPL</mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                            <div>
+                                <button mat-raised-button matStepperPrevious>Back</button>
+                                <button mat-raised-button color="accent" matStepperNext>Next</button>
+                            </div>
+                    </form>
+                </mat-step>
+                
+                <mat-step [stepControl]="socialMediaForm" label="Social Media" errorMessage="All fields are required.">
+                    <form [formGroup]="socialMediaForm">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Facebook</mat-label>
+                            <input matInput formControlName="facebook" placeholder="Facebook Id" required>
+                         </mat-form-field>
+                         <br>
+    
+                         <mat-form-field appearance="outline">
+                            <mat-label>Twitter</mat-label>
+                            <input matInput formControlName="twitter" placeholder="twitter handle" required>
+                         </mat-form-field>
+                         <br>
+    
+                         <mat-form-field appearance="outline">
+                            <mat-label>Instagram</mat-label>
+                            <input matInput formControlName="instagram" placeholder="Instagram link" required>
+                         </mat-form-field>
+                         <br>
+                         
+                            <div>
+                                <button mat-raised-button matStepperPrevious>Back</button>
+                                <button mat-raised-button color="accent" matStepperNext (click)="getSummary()">Next</button>
+                            </div>
+                    </form> 
+                </mat-step>
+                
+                <mat-step label="Summary">
+
+                    <div id="accordion">
+                        <div class="card card_collapse">
+                          <div class="card-header">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#basic_info">
+                                Basic Info
+                              </button>
+                            </h5>
+                          </div>
+                      
+                          <div id="basic_info" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="basic-info-row">
+                                    <label >Name</label> {{ name }}
+                                    <br>
+                                    <label >Sport </label> {{ sport }}
+                                    <br>
+                                    <label >Nationality</label> {{ nationality}}
+                                    <br>
+                                    <label >D.O.B</label> {{ dob }}
+                                    <br>
+                                    <label>Gender</label> {{ gender }}
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card card_collapse">
+                          <div class="card-header">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#about">
+                                About
+                              </button>
+                            </h5>
+                          </div>
+                          <div id="about" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="basic-info-row">
+                                    <label >Description</label> {{ description }}
+                                    <br>
+                                    <label >Association</label> {{ association}}
+                                    <br>
+                                    <label >Team</label> {{ team }}
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card card_collapse">
+                          <div class="card-header">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#social_media">
+                                Social Media
+                              </button>
+                            </h5>
+                          </div>
+                          <div id="social_media" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="basic-info-row">
+                                    <label >Facebook</label> {{ facebook }}
+                                    <br>
+                                    <label >Instagram </label> {{ instagram }}
+                                    <br>
+                                    <label >Twitter</label> {{ twitter}}
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <!-- <section >
+                        <details>
+                            <summary>Basic Info</summary>
+                            <div class="basic-info-row">
+                                <label >Name</label> {{ name }}
+                                <br>
+                                <label >Sport </label> {{ sport }}
+                                <br>
+                                <label >Nationality</label> {{ nationality}}
+                                <br>
+                                <label >D.O.B</label> {{ dob }}
+                                <br>
+                                <label>Gender</label> {{ gender }}
+                            </div>
+                        </details>
+                        <mat-divider></mat-divider>
+                        <details>
+                            <summary>About</summary>
+                            <div class="basic-info-row">
+                                <label >Description</label> {{ description }}
+                                <br>
+                                <label >Location </label> {{ location }}
+                                <br>
+                                <label >Association</label> {{ association}}
+                                <br>
+                                <label >Team</label> {{ team }}
+                            </div>
+                        </details>
+                        <mat-divider></mat-divider>
+
+                        <details>
+                            <summary>Social Media</summary>
+                            <div class="basic-info-label">
+                                <h2>Social Media</h2>
+                            </div>
+                            <div class="basic-info-row">
+                                <label >Facebook</label> {{ facebook }}
+                                <br>
+                                <label >Instagram </label> {{ instagram }}
+                                <br>
+                                <label >Twitter</label> {{ twitter}}
+                            </div>
+                        </details>
+                        <mat-divider></mat-divider>
+                    </section> -->
+
+
+                    
+                    <div class="text-center mt-3">
+                        <button mat-raised-button color="accent" matStepperNext (click)="getSummary()">Next</button>
+                    </div>
+                </mat-step>
+
+                <mat-step label="Submit">
+                    <div class="text-center" *ngIf="!submitted">
+                        <p class="lead mt-1 mb-1 p-1">Are you sure you want to create this profile? If Yes click on <strong>Submit</strong> to create your profile.</p>
+
+                        <button class="mt-5" mat-raised-button color="accent" style="width: 100px;" (click)="createProfile()">Submit</button>
+                    </div>
+
+                    <div class="text-center" *ngIf="submitted">
+                        <p class="lead mb-3"> Profile Created Successfully!!</p>
+                        
+                        <a mat-raised-button href="#">Create New Profile</a>
+                    </div>
+                    
+
+                </mat-step>
+            </mat-horizontal-stepper>
+            </div>
+        </div>
+
+        
+    
+</div>

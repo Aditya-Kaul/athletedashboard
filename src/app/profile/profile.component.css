@@ -1,0 +1,19 @@
+
+#grad1 {
+    background-color:  #9C27B0;
+    background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+}
+
+mat-form-field {
+    width: 300px;
+}
+
+.picture {
+    width: 100px;
+    padding: 3px;
+    border: 1px solid #48ea24;
+}
+
+dl {
+    text-align: center;
+}

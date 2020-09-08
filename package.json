@@ -2,6 +2,7 @@
   "name": "oodles",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -9,8 +10,14 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
+  },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~10.1.0",
+    "@angular/compiler-cli": "~10.1.0",
     "@angular/animations": "~10.1.0",
     "@angular/cdk": "^10.2.0",
     "@angular/common": "~10.1.0",
@@ -27,6 +34,7 @@
     "rxjs": "~6.6.0",
     "select2": "^4.0.13",
     "sweetalert": "^2.1.2",
+    "typescript": "~4.0.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

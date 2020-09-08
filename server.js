@@ -7,8 +7,6 @@ const app = express();
 app.use(express.static(__dirname + '/src/index.html'));
 
 app.get('/*', function(req,res) {
-    res.send('Hello World!!');
-    
 res.sendFile(path.join(__dirname+'/src/index.html'));
 });
 
